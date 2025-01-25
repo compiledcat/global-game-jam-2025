@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DuckController : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class DuckController : MonoBehaviour
 
     [SerializeField] private Transform _mesh;
 
+    [SerializeField] private PlayerInput _playerInput;
+    
+    private InputAction _moveAction;
+    
     private float _throttle;
     private float _turn;
 
@@ -24,12 +29,14 @@ public class DuckController : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _moveAction = _playerInput.actions["Move"];
     }
 
     private void Update()
     {
-        _throttle = Input.GetAxis("Vertical");
-        _turn = Input.GetAxis("Horizontal");
+        var move = _moveAction.ReadValue<Vector2>();
+        _throttle = move.y;
+        _turn = move.x;
 
         // bank into turns and acceleration
         var bank = Vector3.Dot(_rb.linearVelocity, transform.right) * _bankMultiplier;
