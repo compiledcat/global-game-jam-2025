@@ -67,7 +67,7 @@ public class WaterDisplacementManager : MonoBehaviour
         }
     }
 
-    public static float GetHeightAtPosition(Vector2 xz)
+    public float GetHeightAtPosition(Vector2 xz)
     {
         //Calculate wave height using sum of sines
         float height = 0.0f;
