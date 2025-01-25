@@ -1,6 +1,10 @@
 using UnityEngine;
 using System.Linq;
+using System.Collections.Generic;
 using Unity.Mathematics;
+using NUnit.Framework;
+using UnityEditor.Animations;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class WaterDisplacementManager : MonoBehaviour
 {
@@ -33,6 +37,53 @@ public class WaterDisplacementManager : MonoBehaviour
         UpdateShaderParameters();
     }
 
+
+
+    [SerializeField] private int pointsAlongX;
+    [SerializeField] private int pointsAlongZ;
+
+    [ContextMenu("Generate Plane")]
+    public void GeneratePlane()
+    {
+        Mesh mesh = GetComponent<MeshFilter>().sharedMesh;
+        List<Vector3> vertices = new List<Vector3>();
+        List<int> tris = new List<int>();
+
+        //Vertex data
+        float subdivisionIncrementX = 1.0f / (pointsAlongX - 1);  //Distance between points along x axis
+        float subdivisionIncrementZ = 1.0f / (pointsAlongZ - 1); //Distance between points along z axis
+
+        Vector2 topLeft = new Vector2(-0.5f, 0.5f);
+
+        for (int i = 0; i < pointsAlongZ; ++i) {
+            float z = topLeft.y - (i * subdivisionIncrementZ);
+            for (int j = 0; j < pointsAlongX; ++j) {
+                float x = topLeft.x + (j * subdivisionIncrementX);
+                vertices.Add(new Vector3(x, 0.0f, z));
+            }
+        }
+
+        //Indices data
+        for (int z = 0; z < pointsAlongZ - 1; ++z) {
+            for (int x = 0; x < pointsAlongX - 1; ++x) {
+
+                //First triangle
+                tris.Add((z * pointsAlongX) + x + 1);
+                tris.Add((z * pointsAlongX) + x + pointsAlongX);
+                tris.Add((z * pointsAlongX) + x);
+                
+                //Second triangle
+                tris.Add((z * pointsAlongX) + x + pointsAlongX + 1);
+                tris.Add((z * pointsAlongX) + x + pointsAlongX);
+                tris.Add((z * pointsAlongX) + x + 1);
+            }
+        }
+
+        mesh.vertices = vertices.ToArray();
+        mesh.triangles = tris.ToArray();
+        mesh.RecalculateNormals();
+    }
+
     void InitialiseWaveParameters()
     {
         amplitudes = new float[NUM_WAVES];
@@ -42,8 +93,8 @@ public class WaterDisplacementManager : MonoBehaviour
 
         float scale = Mathf.Max(transform.lossyScale.x, transform.lossyScale.z);
 
-        Vector2 startAmplitudeRange = new Vector2(0.4f, 0.8f) * scale;
-        Vector2 startFrequencyRange = new Vector2(2.5f, 5.0f) / scale;
+        Vector2 startAmplitudeRange = new Vector2(0.0008f, 0.0016f) * scale;
+        Vector2 startFrequencyRange = new Vector2(25f, 50f) / scale;
         Vector2 startSpeedRange = new Vector2(-1.2f, 1.2f);
         int wavesPerIteration = 1;
         float amplitudeFalloff = 0.83f;
