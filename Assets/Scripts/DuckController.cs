@@ -13,6 +13,14 @@ public class DuckController : MonoBehaviour
     private float _throttle;
     private float _turn;
 
+    public int NextCheckpointIndex;
+
+    public void AdvanceCheckpoint()
+    {
+        NextCheckpointIndex++;
+        // todo check stuff idk
+    }
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -33,5 +41,16 @@ public class DuckController : MonoBehaviour
     {
         _rb.AddForce(transform.forward * (_throttle * _maxSpeed));
         _rb.AddTorque(transform.up * (_turn * _rotateSpeed));
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out Checkpoint checkpoint))
+        {
+            if (NextCheckpointIndex == checkpoint.CheckpointIndex)
+            {
+                AdvanceCheckpoint();
+            }
+        }
     }
 }

@@ -5,7 +5,7 @@ public class MultipleCamerasOnStartup : MonoBehaviour
 {
     void Start()
     {
-        int numCams = GameStateManager.numPlayers;
+        int numCams = GameStateManager.NumPlayers;
         if (numCams == 3) { numCams = 4; }
         GameObject[] camObjects = new GameObject[numCams];
         for (int i=0; i<numCams; ++i)
