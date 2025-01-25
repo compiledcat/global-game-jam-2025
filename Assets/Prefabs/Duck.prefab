@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 14
-  _rotateSpeed: 1.2
+  _rotateSpeed: 1.25
   _bankMultiplier: 12
   _mesh: {fileID: 7104168242721033403}
   _playerInput: {fileID: -2468112281615469869}

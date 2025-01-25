@@ -5,14 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class LobbyManager : MonoBehaviour
 {
+    public static LobbyManager Instance { get; private set; }
+
     [SerializeField] private PlayerInputManager _playerInputManager;
     [SerializeField] private RectTransform _lobbyPanel;
     [SerializeField] private LobbyPlayerBox _lobbyPlayerBoxPrefab;
     [SerializeField] private Transform _spawnLocation;
 
-    private List<InputDevice> _playerDevices = new();
+    [SerializeField] private List<string> _playerVerbs;
+    [SerializeField] private List<string> _playerNouns;
+    private IDictionary<string, InputDevice> _players = new Dictionary<string, InputDevice>();
 
-    public static LobbyManager Instance { get; private set; }
+    private string GenerateUniqueName()
+    {
+        string playerName;
+        do
+        {
+            playerName =
+                $"{_playerVerbs[Random.Range(0, _playerVerbs.Count)]} " +
+                $"{_playerNouns[Random.Range(0, _playerNouns.Count)]}";
+        } while (_players.ContainsKey(playerName));
+
+        return playerName;
+    }
 
     private void Awake()
     {
@@ -34,9 +49,12 @@ public class LobbyManager : MonoBehaviour
         player.transform.position = _spawnLocation.position + new Vector3(offset.x, 0, offset.y);
         Physics.SyncTransforms();
 
-        Instantiate(_lobbyPlayerBoxPrefab, _lobbyPanel); // todo make this mean something
+        var lobbyPlayerBox = Instantiate(_lobbyPlayerBoxPrefab, _lobbyPanel);
+        var playerName = GenerateUniqueName();
+        lobbyPlayerBox.SetPlayerIndex(player.playerIndex + 1);
+        lobbyPlayerBox.SetPlayerName(playerName);
 
-        _playerDevices.Add(player.devices[0]);
+        _players.Add(playerName, player.devices[0]);
     }
 
     private void OnPlayerJoinGame(PlayerInput player)
@@ -53,9 +71,9 @@ public class LobbyManager : MonoBehaviour
 
         await SceneManager.LoadSceneAsync("Scenes/Main");
 
-        foreach (var device in _playerDevices)
+        foreach (var player in _players)
         {
-            _playerInputManager.JoinPlayer(pairWithDevice: device);
+            _playerInputManager.JoinPlayer(pairWithDevice: player.Value);
         }
     }
 }

@@ -14,10 +14,9 @@ public class DuckController : MonoBehaviour
     [SerializeField] private PlayerInput _playerInput;
     
     private InputAction _moveAction;
+    private Vector2 _move;
     
-    private float _throttle;
-    private float _turn;
-
+    public string PlayerName;
     public int NextCheckpointIndex;
 
     public void AdvanceCheckpoint()
@@ -34,9 +33,7 @@ public class DuckController : MonoBehaviour
 
     private void Update()
     {
-        var move = _moveAction.ReadValue<Vector2>();
-        _throttle = move.y;
-        _turn = move.x;
+        _move = _moveAction.ReadValue<Vector2>();
 
         // bank into turns and acceleration
         var bank = Vector3.Dot(_rb.linearVelocity, transform.right) / _maxSpeed * _bankMultiplier;
@@ -46,8 +43,8 @@ public class DuckController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.AddForce(transform.forward * (_throttle * _maxSpeed));
-        _rb.AddTorque(transform.up * (_turn * _rotateSpeed));
+        _rb.AddForce(transform.forward * (_move.y * _maxSpeed));
+        _rb.AddTorque(transform.up * (_move.x * _rotateSpeed));
     }
 
     private void OnTriggerEnter(Collider other)
