@@ -47,6 +47,7 @@ public class LobbyManager : MonoBehaviour
         player.GetComponentInChildren<Camera>().gameObject.SetActive(false);
         var offset = Random.insideUnitCircle * 5f;
         player.transform.position = _spawnLocation.position + new Vector3(offset.x, 0, offset.y);
+        player.transform.forward = _spawnLocation.position - player.transform.position;
         Physics.SyncTransforms();
 
         var lobbyPlayerBox = Instantiate(_lobbyPlayerBoxPrefab, _lobbyPanel);
