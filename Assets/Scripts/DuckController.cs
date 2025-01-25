@@ -39,8 +39,8 @@ public class DuckController : MonoBehaviour
         _turn = move.x;
 
         // bank into turns and acceleration
-        var bank = Vector3.Dot(_rb.linearVelocity, transform.right) * _bankMultiplier;
-        var pitch = Vector3.Dot(_rb.linearVelocity, transform.forward) * _bankMultiplier;
+        var bank = Vector3.Dot(_rb.linearVelocity, transform.right) / _maxSpeed * _bankMultiplier;
+        var pitch = Vector3.Dot(_rb.linearVelocity, transform.forward) / _maxSpeed * _bankMultiplier;
         _mesh.localRotation = Quaternion.Euler(-pitch, 0f, bank);
     }
 

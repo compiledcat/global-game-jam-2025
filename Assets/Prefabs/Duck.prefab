@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5714139202067362417}
   - component: {fileID: -2468112281615469869}
   - component: {fileID: 2758105052738463263}
+  - component: {fileID: 7342834645944403709}
   m_Layer: 0
   m_Name: Duck
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1802520898275215323}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.28, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -57,7 +58,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.6
-  m_Center: {x: 0, y: 0.05, z: -0.22}
+  m_Center: {x: 0, y: 0.5, z: -0.22}
 --- !u!54 &5714139202067362417
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -69,7 +70,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 1
   m_AngularDrag: 4
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_CenterOfMass: {x: 0, y: -1, z: -0.22}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
@@ -78,9 +79,9 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
+  m_ImplicitCom: 0
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -127,12 +128,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 208a17ecf60ad624c9acf57e1031b12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 5
-  _rotateSpeed: 1
-  _bankMultiplier: 2
+  _maxSpeed: 14
+  _rotateSpeed: 1.2
+  _bankMultiplier: 12
   _mesh: {fileID: 7104168242721033403}
   _playerInput: {fileID: -2468112281615469869}
   NextCheckpointIndex: 0
+--- !u!114 &7342834645944403709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802520898275215323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da42a30befd24c5da50294354b4827c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bounceDamp: 0.075
+  _samplePoints:
+  - {x: -0.5, y: 0.175, z: 0.3}
+  - {x: 0.5, y: 0.175, z: 0.3}
+  - {x: -0.5, y: 0.175, z: -0.7}
+  - {x: 0.5, y: 0.175, z: -0.7}
 --- !u!1 &2288112946828160030
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a48e127eff60f914aa16acdda9cb58b6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a48e127eff60f914aa16acdda9cb58b6, type: 3}
       propertyPath: m_LocalPosition.z
