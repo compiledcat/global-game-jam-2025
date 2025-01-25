@@ -73,7 +73,8 @@ public class LobbyManager : MonoBehaviour
 
         foreach (var player in _players)
         {
-            _playerInputManager.JoinPlayer(pairWithDevice: player.Value);
+            var playerInput = _playerInputManager.JoinPlayer(pairWithDevice: player.Value);
+            playerInput.GetComponent<DuckController>().PlayerName = player.Key;
         }
     }
 }
