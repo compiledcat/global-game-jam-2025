@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class SplitScreenManager : MonoBehaviour
 {
     [SerializeField] private PlayerInputManager _playerInputManager;
-
+    
     private void OnEnable()
     {
         _playerInputManager.playerJoinedEvent.AddListener(OnPlayerJoined);
@@ -18,12 +18,17 @@ public class SplitScreenManager : MonoBehaviour
         _playerInputManager.playerLeftEvent.RemoveListener(OnPlayerLeft);
     }
 
-    private void OnPlayerJoined(PlayerInput arg0)
+    private void OnPlayerJoined(PlayerInput player)
     {
         Debug.Log("player joined");
+        
+        var offset = Random.insideUnitCircle * 5f;
+        player.transform.position = new Vector3(offset.x, 9.2f, offset.y);
+        player.transform.forward = Vector3.zero - player.transform.position;
+        Physics.SyncTransforms();
     }
 
-    private void OnPlayerLeft(PlayerInput arg0)
+    private void OnPlayerLeft(PlayerInput player)
     {
         Debug.Log("player left");
     }
