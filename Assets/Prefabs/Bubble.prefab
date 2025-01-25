@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2765018252756867963}
   - component: {fileID: 2674491658902312014}
   - component: {fileID: 4545826955082944925}
-  - component: {fileID: 5969506501176340295}
+  - component: {fileID: 649437676373559025}
   m_Layer: 0
   m_Name: Bubble
   m_TagString: Untagged
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 82e6764ccafab904192d4dc3cae5fcab, type: 3}
+  - {fileID: 2100000, guid: 762170d0a4e448846a774d264df16a93, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,7 +109,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5969506501176340295
+--- !u!114 &649437676373559025
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

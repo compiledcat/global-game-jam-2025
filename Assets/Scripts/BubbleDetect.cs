@@ -8,8 +8,18 @@ public class BubbleDetect : MonoBehaviour
     [SerializeField] Vector2Int resolution;
     [SerializeField] GameObject bubblePrefab;
     [SerializeField] Transform bubbleParent;
-    [SerializeField] bool autoGenerate, drawGizmos;
+    [SerializeField] bool autoGenerate, drawGizmos, inverse;
     //[SerializeField] bool[,] grid;
+
+
+    [ContextMenu("Delete Bubbles")]
+    void DeleteBubbles()
+    {
+        for (int i = bubbleParent.childCount - 1; i >= 0; i--)
+        {
+            DestroyImmediate(bubbleParent.GetChild(i).gameObject);
+        }
+    }
 
 
     [ContextMenu("Generate Bubbles")]
@@ -42,7 +52,8 @@ public class BubbleDetect : MonoBehaviour
                     j * bounds.y / (resolution.y - 1) - bounds.y / 2 + transform.position.z + Random.Range(-offset, offset)
                 );
                 //RaycastHit hit;
-                if (!Physics.Raycast(origin, Vector3.down, out _, height, layerMask))
+                bool hit = Physics.Raycast(origin, Vector3.down, out _, height, layerMask);
+                if (hit == inverse)
                 {
                     GameObject bubble = Instantiate(bubblePrefab, bubbleParent);
                     bubble.transform.localScale = Random.Range(1-sizeVariance, 1+sizeVariance) * scale * Vector3.one;

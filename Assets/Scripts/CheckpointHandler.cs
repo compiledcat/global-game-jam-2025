@@ -11,6 +11,17 @@ public class CheckpointHandler : MonoBehaviour
     [SerializeField] int checkpointCount;
     [SerializeField] float mergeDistance;
 
+
+    [ContextMenu("Delete Checkpoints")]
+    void Delete_Checkpoints()
+    {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            DestroyImmediate(transform.GetChild(i).gameObject);
+        }
+    }
+
+
     [ContextMenu("Generate")]
     void Generate()
     {
@@ -57,7 +68,6 @@ public class CheckpointHandler : MonoBehaviour
                 float t = j / (float)checkpointCount;
                 if (start < end && (t > start && t < end) || start > end && (t > start && t < 1 || t > 0 && t < end))
                 {
-                    Gizmos.DrawSphere((Vector3)path.Splines[i].EvaluatePosition((t - start) / (end - start)) + path.transform.position, 0.1f);
                     var cp = Instantiate(checkpoint, (Vector3)path.Splines[i].EvaluatePosition((t - start) / (end - start)) + path.transform.position, Quaternion.identity, transform);
                     checkpoints[j].Add(cp);
                     cp.checkpointIndex = j;

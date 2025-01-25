@@ -10,15 +10,4 @@ public class Bubble : MonoBehaviour
         GetComponent<MeshRenderer>().SetPropertyBlock(new MaterialPropertyBlock());
         //id = GetComponent<MeshRenderer>().GetInstanceID();
     }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
