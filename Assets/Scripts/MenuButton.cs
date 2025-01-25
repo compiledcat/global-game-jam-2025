@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public enum ButtonType
 {
-    Start,
+    Play,
     Quit
 }
 
@@ -27,8 +27,8 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         {
             switch (_buttonType)
             {
-                case ButtonType.Start:
-                    SceneManager.LoadScene("Scenes/Main");
+                case ButtonType.Play:
+                    LobbyManager.Instance.BeginGame();
                     break;
                 case ButtonType.Quit:
                     Debug.Log("bye bye :)");

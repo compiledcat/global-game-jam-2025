@@ -1497,8 +1497,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1408316188}
   - component: {fileID: 1408316187}
-  - component: {fileID: 1408316186}
   - component: {fileID: 1408316189}
+  - component: {fileID: 1408316190}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1506,19 +1506,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1408316186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408316185}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6a42168b716ee148ba5f932b725072a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerInputManager: {fileID: 1408316187}
 --- !u!114 &1408316187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1594,6 +1581,18 @@ MonoBehaviour:
   _lobbyPanel: {fileID: 1273062242}
   _lobbyPlayerBoxPrefab: {fileID: -4134028302004934263, guid: a51535984e7bce34c913ad8bb819672a, type: 3}
   _spawnLocation: {fileID: 601309198}
+--- !u!114 &1408316190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408316185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab509498cbca45678f1da45b26877d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2097793094
 PrefabInstance:
   m_ObjectHideFlags: 0

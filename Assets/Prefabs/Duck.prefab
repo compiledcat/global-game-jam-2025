@@ -128,9 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 208a17ecf60ad624c9acf57e1031b12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 5
-  _rotateSpeed: 1
-  _bankMultiplier: 2
+  _maxSpeed: 14
+  _rotateSpeed: 1.2
+  _bankMultiplier: 12
   _mesh: {fileID: 7104168242721033403}
   _playerInput: {fileID: -2468112281615469869}
   NextCheckpointIndex: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da42a30befd24c5da50294354b4827c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bounceDamp: 0.04
+  _bounceDamp: 0.075
   _samplePoints:
   - {x: -0.5, y: 0.175, z: 0.3}
   - {x: 0.5, y: 0.175, z: 0.3}
