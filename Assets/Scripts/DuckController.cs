@@ -12,12 +12,11 @@ public class DuckController : MonoBehaviour
     [SerializeField] private Transform _mesh;
 
     [SerializeField] private PlayerInput _playerInput;
-    
-    private InputAction _moveAction;
-    
-    private float _throttle;
-    private float _turn;
 
+    private InputAction _moveAction;
+    private Vector2 _move;
+
+    public string PlayerName;
     public int NextCheckpointIndex;
 
     public void AdvanceCheckpoint()
@@ -34,20 +33,23 @@ public class DuckController : MonoBehaviour
 
     private void Update()
     {
-        var move = _moveAction.ReadValue<Vector2>();
-        _throttle = move.y;
-        _turn = move.x;
+        _move = _moveAction.ReadValue<Vector2>();
 
         // bank into turns and acceleration
-        var bank = Vector3.Dot(_rb.linearVelocity, transform.right) * _bankMultiplier;
-        var pitch = Vector3.Dot(_rb.linearVelocity, transform.forward) * _bankMultiplier;
+        var bank = Vector3.Dot(_rb.linearVelocity, transform.right) / _maxSpeed * _bankMultiplier;
+        var pitch = Vector3.Dot(_rb.linearVelocity, transform.forward) / _maxSpeed * _bankMultiplier;
         _mesh.localRotation = Quaternion.Euler(-pitch, 0f, bank);
     }
 
     private void FixedUpdate()
     {
-        _rb.AddForce(transform.forward * (_throttle * _maxSpeed));
-        _rb.AddTorque(transform.up * (_turn * _rotateSpeed));
+        // todo sample dynamic water height
+        if (transform.position.y <= 9.2f)
+        {
+            _rb.AddForce(transform.forward * (_move.y * _maxSpeed));
+        }
+
+        _rb.AddTorque(transform.up * (_move.x * _rotateSpeed));
     }
 
     private void OnTriggerEnter(Collider other)
