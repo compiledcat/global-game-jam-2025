@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class BuoyancyObject : MonoBehaviour
 {
     private Rigidbody _rb;

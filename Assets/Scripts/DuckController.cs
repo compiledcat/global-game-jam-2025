@@ -12,10 +12,10 @@ public class DuckController : MonoBehaviour
     [SerializeField] private Transform _mesh;
 
     [SerializeField] private PlayerInput _playerInput;
-    
+
     private InputAction _moveAction;
     private Vector2 _move;
-    
+
     public string PlayerName;
     public int NextCheckpointIndex;
 
@@ -43,7 +43,12 @@ public class DuckController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.AddForce(transform.forward * (_move.y * _maxSpeed));
+        // todo sample dynamic water height
+        if (transform.position.y <= 9.2f)
+        {
+            _rb.AddForce(transform.forward * (_move.y * _maxSpeed));
+        }
+
         _rb.AddTorque(transform.up * (_move.x * _rotateSpeed));
     }
 

@@ -60,7 +60,9 @@ public class LobbyManager : MonoBehaviour
 
     private void OnPlayerJoinGame(PlayerInput player)
     {
-        Debug.Log("duck");
+        var offset = Random.insideUnitCircle * 5f;
+        player.transform.position += new Vector3(offset.x, 0, offset.y);
+        Physics.SyncTransforms();
     }
 
     public async void BeginGame()
