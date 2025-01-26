@@ -16,6 +16,8 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] private List<string> _playerNouns;
     private IDictionary<string, InputDevice> _players = new Dictionary<string, InputDevice>();
 
+    
+
     private string GenerateUniqueName()
     {
         string playerName;
@@ -62,6 +64,7 @@ public class LobbyManager : MonoBehaviour
     {
         var offset = Random.insideUnitCircle * 5f;
         player.transform.position += new Vector3(offset.x, 0, offset.y);
+        //player.transform.position = 
         Physics.SyncTransforms();
     }
 
