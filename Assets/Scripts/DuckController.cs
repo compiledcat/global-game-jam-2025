@@ -44,6 +44,7 @@ public class DuckController : MonoBehaviour
     public void AdvanceCheckpoint()
     {
         NextCheckpointIndex++;
+        Debug.Log($"PASSED CHECKPOINT {NextCheckpointIndex - 1}");
         // todo check stuff idk
     }
 
@@ -86,9 +87,10 @@ public class DuckController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Checkpoint checkpoint))
+        if (other.TryGetComponent(out CheckpointScript checkpoint))
         {
-            if (NextCheckpointIndex == checkpoint.CheckpointIndex)
+            Debug.Log($"Collided with checkpoint {checkpoint.checkpointIndex} with current player checkpoint index of {NextCheckpointIndex - 1}");
+            if (NextCheckpointIndex == checkpoint.checkpointIndex)
             {
                 AdvanceCheckpoint();
             }
