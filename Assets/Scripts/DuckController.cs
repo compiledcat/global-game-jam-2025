@@ -84,7 +84,8 @@ public class DuckController : MonoBehaviour
 
     private void Update()
     {
-        if (hasControl) {
+        if (hasControl)
+        {
             _move = _moveAction.ReadValue<Vector2>();
         }
 
@@ -92,12 +93,12 @@ public class DuckController : MonoBehaviour
         var bank = Vector3.Dot(_rb.linearVelocity, transform.right) / _maxSpeed * _bankMultiplier;
         var pitch = Vector3.Dot(_rb.linearVelocity, transform.forward) / _maxSpeed * _bankMultiplier;
         _mesh.localRotation = Quaternion.Euler(-pitch, 0f, bank);
-        
+
         if (_lapTimeText.gameObject.activeInHierarchy)
         {
             var sortedPlayers = LeaderboardManager.GetSortedPlayerArray().ToList();
             var lapTimeFormatted = System.TimeSpan.FromSeconds(Time.time - _lapStartTime).ToString("mm\\:ss\\.fff");
-            _lapTimeText.text = lapTimeFormatted;
+            _lapTimeText.text = $"{lapTimeFormatted}\nLap {lapCounter + 1}/3";
 
             var position = sortedPlayers.IndexOf(this) + 1;
             _positionText.text = $"<size=200%>{position}{GetOrdinal(position)}</size> / {sortedPlayers.Count}";
@@ -119,7 +120,8 @@ public class DuckController : MonoBehaviour
     {
         if (other.TryGetComponent(out CheckpointScript checkpoint))
         {
-            Debug.Log($"Collided with checkpoint {checkpoint.checkpointIndex} with current player checkpoint index of {NextCheckpointIndex - 1}");
+            Debug.Log(
+                $"Collided with checkpoint {checkpoint.checkpointIndex} with current player checkpoint index of {NextCheckpointIndex - 1}");
             if (NextCheckpointIndex == checkpoint.checkpointIndex)
             {
                 AdvanceCheckpoint();
