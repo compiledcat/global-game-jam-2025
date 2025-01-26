@@ -91,6 +91,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -7815569576046434226, guid: 9470fd1d3550f0346a925dd8c51dfbc3, type: 3}
+      propertyPath: _updateEveryNFrames
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7815569576046434226, guid: 9470fd1d3550f0346a925dd8c51dfbc3, type: 3}
       propertyPath: _samplePoints.Array.size
       value: 1
       objectReference: {fileID: 0}

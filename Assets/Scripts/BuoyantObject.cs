@@ -9,6 +9,10 @@ public class BuoyantObject : MonoBehaviour
     [SerializeField] private float _bounceDamp = 0.04f;
     [SerializeField] private List<Vector3> _samplePoints = new();
     private Transform _waterObject;
+
+    [SerializeField] private int _updateEveryNFrames = 1;
+
+    private int _framesSinceLastUpdate;
     
     private WaterDisplacementManager _waterDisplacementManager;
 
@@ -21,6 +25,11 @@ public class BuoyantObject : MonoBehaviour
 
     private void FixedUpdate()
     {
+        _framesSinceLastUpdate++;
+        if (_framesSinceLastUpdate < _updateEveryNFrames) return;
+
+        _framesSinceLastUpdate = 0;
+        
         foreach (var point in _samplePoints)
         {
             var worldPos = transform.TransformPoint(point);
@@ -32,7 +41,7 @@ public class BuoyantObject : MonoBehaviour
             if (forceFactor > 0f)
             {
                 var uplift = -Physics.gravity * (forceFactor - _rb.linearVelocity.y * _bounceDamp);
-                _rb.AddForceAtPosition(uplift * massModifier, worldPos);
+                _rb.AddForceAtPosition(uplift * (massModifier * _updateEveryNFrames), worldPos);
             }
         }
     }
