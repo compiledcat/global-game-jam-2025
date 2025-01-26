@@ -2,11 +2,11 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-public class LeaderboardManager : MonoBehaviour
+public class LeaderboardManager
 {
-    public static DuckController[] GetSortedPlayerArray()
+    public static IOrderedEnumerable<DuckController> GetSortedPlayerArray()
     {
-        DuckController[] players = FindObjectsByType<DuckController>(FindObjectsSortMode.None);
+        DuckController[] players = Object.FindObjectsByType<DuckController>(FindObjectsSortMode.None);
 
         return players.OrderBy((player) =>
         {
@@ -15,6 +15,6 @@ public class LeaderboardManager : MonoBehaviour
         {
             Vector3 nextCheckpointPosition = CheckpointHandler.GetNearestCheckpoint(player.NextCheckpointIndex, player.transform.position);
             return Vector3.Distance(nextCheckpointPosition, player.transform.position);
-        }).ToArray();
+        });
     }
 }
