@@ -116,8 +116,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   resolution: {x: 137, y: 55}
-  bubblePrefab: {fileID: 2652143193660726702, guid: 13e3a5bb499940f4fb95ab6db0de5984, type: 3}
-  bubbleParent: {fileID: 4361861754564153754}
+  objectPrefab:
+  - {fileID: 2652143193660726702, guid: 13e3a5bb499940f4fb95ab6db0de5984, type: 3}
+  objectParent: {fileID: 4361861754564153754}
   autoGenerate: 0
   drawGizmos: 0
   insideTrack: 0
@@ -1092,8 +1093,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: {fileID: 1128582933221129154}
-  rightCorner: {fileID: 5048868639322274235, guid: 2bbba302712b8014693395c5835f8c1a, type: 3}
-  leftCorner: {fileID: 4099468014577074116, guid: 75cab5657f0e9d44d9ed6445003c9f84, type: 3}
+  rightCorner: {fileID: 2905216487122616656, guid: b64fc22213654b845a8cfe5f6ebe26ae, type: 3}
+  leftCorner: {fileID: 573138121998284754, guid: 03b4be58f548e29419a43515195270ec, type: 3}
   cornerGap: 2
   guideAngle: 10
   displaceDist: 3
@@ -1152,8 +1153,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   resolution: {x: 137, y: 55}
-  bubblePrefab: {fileID: 2652143193660726702, guid: 13e3a5bb499940f4fb95ab6db0de5984, type: 3}
-  bubbleParent: {fileID: 4305749662184558620}
+  objectPrefab:
+  - {fileID: 1020691561203857299, guid: 3564e69db81e5a7469dee7e9369dae74, type: 3}
+  - {fileID: 6650972233611283669, guid: 522405bcd39e1a549b19bd18d13a3d63, type: 3}
+  objectParent: {fileID: 4305749662184558620}
   autoGenerate: 0
   drawGizmos: 0
   insideTrack: 1
@@ -1240,6 +1243,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: {fileID: 1128582933221129154}
-  checkpoint: {fileID: -6661281128023094877, guid: 7b5425def33268743839dd9673404ddf, type: 3}
+  checkpoint: {fileID: 8599291092883174443, guid: 2b169ad920d20f24b9cdd035d448dd06, type: 3}
   checkpointCount: 40
   mergeDistance: 2
