@@ -86,4 +86,16 @@ public class LobbyManager : MonoBehaviour
             playerInput.GetComponent<DuckController>().PlayerName = player.Key;
         }
     }
+
+    public static void EndGame()
+    {
+        Camera[] cameras = FindObjectsByType<Camera>(FindObjectsSortMode.None);
+        foreach (Camera cam in cameras)
+        {
+            cam.enabled = false;
+        }
+
+        Camera.main.enabled = true;
+
+    }
 }

@@ -7,6 +7,8 @@ public class DuckController : MonoBehaviour
 {
     private Rigidbody _rb;
 
+    private bool hasControl; //Player loses control once they finish the race
+
     [SerializeField] private float _maxSpeed = 5f;
     [SerializeField] private float _rotateSpeed = 1f;
     [SerializeField] private float _bankMultiplier = 2f;
@@ -17,6 +19,8 @@ public class DuckController : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _lapTimeText;
     [SerializeField] private TextMeshProUGUI _positionText;
+
+    public uint lapCounter; //0-indexed
 
     private InputAction _moveAction;
     private Vector2 _move;
@@ -43,8 +47,32 @@ public class DuckController : MonoBehaviour
 
     public void AdvanceCheckpoint()
     {
+        Debug.Log($"PASSED CHECKPOINT {NextCheckpointIndex}");
+        if ((NextCheckpointIndex % CheckpointHandler.checkpoints.Length == 0) && NextCheckpointIndex != 0)
+        {
+            Debug.Log($"PASSED CHECKPOINT {NextCheckpointIndex}");
+            Debug.Log($"PASSED LAP {lapCounter}");
+            if (lapCounter == 2)
+            {
+                //Finished final lap
+                Debug.Log("RACE COMPLETE.");
+
+                hasControl = false;
+                if (LeaderboardManager.GetSortedPlayerArray().Last() == this)
+                {
+                    //Player is in last place
+                    //=> All players have finished
+                    //=> Race is over
+                    LobbyManager.EndGame();
+                }
+            }
+
+            lapCounter++;
+        }
+
         NextCheckpointIndex++;
-        Debug.Log($"PASSED CHECKPOINT {NextCheckpointIndex - 1}");
+
+
         // todo check stuff idk
     }
 
@@ -56,7 +84,9 @@ public class DuckController : MonoBehaviour
 
     private void Update()
     {
-        _move = _moveAction.ReadValue<Vector2>();
+        if (hasControl) {
+            _move = _moveAction.ReadValue<Vector2>();
+        }
 
         // bank into turns and acceleration
         var bank = Vector3.Dot(_rb.linearVelocity, transform.right) / _maxSpeed * _bankMultiplier;
