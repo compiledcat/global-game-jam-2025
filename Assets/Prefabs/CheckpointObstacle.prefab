@@ -122,6 +122,14 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.46
       objectReference: {fileID: 0}
+    - target: {fileID: 1405662929429057661, guid: 9470fd1d3550f0346a925dd8c51dfbc3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824865071558141336, guid: 9470fd1d3550f0346a925dd8c51dfbc3, type: 3}
+      propertyPath: m_Constraints
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3369203349469612941, guid: 9470fd1d3550f0346a925dd8c51dfbc3, type: 3}
       propertyPath: m_Name
       value: CheckpointObstacle

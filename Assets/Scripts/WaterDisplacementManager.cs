@@ -110,7 +110,7 @@ public class WaterDisplacementManager : MonoBehaviour
 
         float scale = Mathf.Max(transform.lossyScale.x, transform.lossyScale.z);
 
-        Vector2 startAmplitudeRange = new Vector2(0.0008f, 0.0016f) * scale;
+        Vector2 startAmplitudeRange = new Vector2(0.0004f, 0.0008f) * scale;
         Vector2 startFrequencyRange = new Vector2(25f, 50f) / scale;
         Vector2 startSpeedRange = new Vector2(-1.2f, 1.2f);
         int wavesPerIteration = 1;

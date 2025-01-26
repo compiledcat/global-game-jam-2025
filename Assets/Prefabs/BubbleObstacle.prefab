@@ -142,6 +142,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1405662929429057661, guid: 9470fd1d3550f0346a925dd8c51dfbc3, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3369203349469612941, guid: 9470fd1d3550f0346a925dd8c51dfbc3, type: 3}
       propertyPath: m_Name
       value: BubbleObstacle
