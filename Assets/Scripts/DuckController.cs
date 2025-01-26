@@ -7,7 +7,7 @@ public class DuckController : MonoBehaviour
 {
     private Rigidbody _rb;
 
-    private bool hasControl; //Player loses control once they finish the race
+    private bool hasControl = true; //Player loses control once they finish the race
 
     [SerializeField] private float _maxSpeed = 5f;
     [SerializeField] private float _rotateSpeed = 1f;
@@ -108,7 +108,7 @@ public class DuckController : MonoBehaviour
     private void FixedUpdate()
     {
         // todo sample dynamic water height
-        if (transform.position.y <= 9.2f)
+        if (transform.position.y <= 1f)
         {
             _rb.AddForce(transform.forward * (_move.y * _maxSpeed));
         }
