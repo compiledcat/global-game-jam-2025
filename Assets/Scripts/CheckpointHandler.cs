@@ -5,7 +5,7 @@ using UnityEngine.Splines;
 
 public class CheckpointHandler : MonoBehaviour
 {
-    List<CheckpointScript>[] checkpoints;
+    static List<CheckpointScript>[] checkpoints;
     [SerializeField] SplineContainer path;
     [SerializeField] CheckpointScript checkpoint;
     [SerializeField] int checkpointCount;
@@ -105,8 +105,9 @@ public class CheckpointHandler : MonoBehaviour
         return (i + 1) % checkpoints.Length;
     }
 
-    public Vector3 GetNearestCheckpoint(int index, Vector3 position)
+    public static Vector3 GetNearestCheckpoint(int index, Vector3 position)
     {
+        index = index % checkpoints.Length;
         Vector3 nearest = checkpoints[index][0].transform.position;
         float minDist = Vector3.Distance(nearest, position);
         for (int i = 1; i < checkpoints[index].Count(); i++)
