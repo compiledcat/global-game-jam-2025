@@ -65,6 +65,11 @@ public class LobbyManager : MonoBehaviour
 
     private void OnPlayerJoinGame(PlayerInput player)
     {
+        var cinemachineBrain = player.GetComponentInChildren<CinemachineBrain>();
+        var cinemachineCamera = player.GetComponentInChildren<CinemachineCamera>();
+        cinemachineBrain.ChannelMask = (OutputChannels)(1 << player.playerIndex + 1);
+        cinemachineCamera.OutputChannel = (OutputChannels)(1 << player.playerIndex + 1);
+        
         //var offset = Random.insideUnitCircle * 5f;
         //player.transform.position += new Vector3(offset.x, 0, offset.y);
         SplineContainer spline = FindFirstObjectByType<SplineContainer>();
