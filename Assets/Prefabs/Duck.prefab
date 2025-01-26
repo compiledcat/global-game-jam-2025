@@ -138,7 +138,6 @@ MonoBehaviour:
   _positionText: {fileID: 5051445279569594221}
   PlayerName: 
   NextCheckpointIndex: 0
-  Position: 0
 --- !u!114 &7342834645944403709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,10 +222,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0:00.000
+  m_text: '0:00.000
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 745366aab603a6f4f85d7e4a01400c7c, type: 2}
-  m_sharedMaterial: {fileID: 3341831582014735059, guid: 745366aab603a6f4f85d7e4a01400c7c, type: 2}
+  m_sharedMaterial: {fileID: 2058328550861265150, guid: 745366aab603a6f4f85d7e4a01400c7c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -505,8 +506,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1543111283
+  m_SortingOrder: 999
   m_TargetDisplay: 0
 --- !u!114 &1134272666688990592
 MonoBehaviour:
@@ -614,10 +615,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <size=200%>1st</size> / 4
+  m_text: '<size=200%>1st</size> / 4
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 44f9d9b615e60194aaa09a67ce597bcb, type: 2}
-  m_sharedMaterial: {fileID: -9044685059758166372, guid: 44f9d9b615e60194aaa09a67ce597bcb, type: 2}
+  m_sharedMaterial: {fileID: 2991772867221229160, guid: 44f9d9b615e60194aaa09a67ce597bcb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
