@@ -6,33 +6,33 @@ public class BubbleDetect : MonoBehaviour
     [SerializeField] float height, offset, scale, sizeVariance, spawnChance;
     [SerializeField] LayerMask layerMask;
     [SerializeField] Vector2Int resolution;
-    [SerializeField] GameObject bubblePrefab;
-    [SerializeField] Transform bubbleParent;
+    [SerializeField] GameObject[] objectPrefab;
+    [SerializeField] Transform objectParent;
     [SerializeField] bool autoGenerate, drawGizmos, insideTrack;
     //[SerializeField] bool[,] grid;
 
 
-    [ContextMenu("Delete Bubbles")]
-    void DeleteBubbles()
+    [ContextMenu("Delete Objects")]
+    void DeleteObjects()
     {
-        for (int i = bubbleParent.childCount - 1; i >= 0; i--)
+        for (int i = objectParent.childCount - 1; i >= 0; i--)
         {
-            DestroyImmediate(bubbleParent.GetChild(i).gameObject);
+            DestroyImmediate(objectParent.GetChild(i).gameObject);
         }
     }
 
 
-    [ContextMenu("Generate Bubbles")]
-    private void GenerateBubbles()
+    [ContextMenu("Generate Objects")]
+    private void GenerateObjects()
     {
         if (Application.isPlaying)
         {
             return;
         }
 
-        for (int i = bubbleParent.childCount - 1; i >= 0; i--)
+        for (int i = objectParent.childCount - 1; i >= 0; i--)
         {
-            DestroyImmediate(bubbleParent.GetChild(i).gameObject);
+            DestroyImmediate(objectParent.GetChild(i).gameObject);
         }
 
         //grid = new bool[resolution.x, resolution.y];
@@ -55,11 +55,11 @@ public class BubbleDetect : MonoBehaviour
                 bool hit = Physics.Raycast(origin, Vector3.down, out _, height, layerMask);
                 if (hit == insideTrack)
                 {
-                    GameObject bubble = Instantiate(bubblePrefab, bubbleParent);
-                    bubble.transform.localScale = Random.Range(1-sizeVariance, 1+sizeVariance) * scale * Vector3.one;
-                    bubble.transform.position = new Vector3(
+                    GameObject objectToSpawn = Instantiate(objectPrefab[Random.Range(0, objectPrefab.Length)], objectParent);
+                    objectToSpawn.transform.localScale = Random.Range(1-sizeVariance, 1+sizeVariance) * scale * Vector3.one;
+                    objectToSpawn.transform.position = new Vector3(
                         origin.x,
-                        transform.position.y + bubble.transform.localScale.y / 2,
+                        transform.position.y + objectToSpawn.transform.localScale.y / 2,
                         origin.z
                     );
                 }
@@ -71,7 +71,7 @@ public class BubbleDetect : MonoBehaviour
     {
         if (autoGenerate)
         {
-            GenerateBubbles();
+            GenerateObjects();
         }
     }
 
