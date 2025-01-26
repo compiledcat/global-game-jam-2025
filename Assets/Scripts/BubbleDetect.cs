@@ -8,7 +8,7 @@ public class BubbleDetect : MonoBehaviour
     [SerializeField] Vector2Int resolution;
     [SerializeField] GameObject bubblePrefab;
     [SerializeField] Transform bubbleParent;
-    [SerializeField] bool autoGenerate, drawGizmos, inverse;
+    [SerializeField] bool autoGenerate, drawGizmos, insideTrack;
     //[SerializeField] bool[,] grid;
 
 
@@ -53,7 +53,7 @@ public class BubbleDetect : MonoBehaviour
                 );
                 //RaycastHit hit;
                 bool hit = Physics.Raycast(origin, Vector3.down, out _, height, layerMask);
-                if (hit == inverse)
+                if (hit == insideTrack)
                 {
                     GameObject bubble = Instantiate(bubblePrefab, bubbleParent);
                     bubble.transform.localScale = Random.Range(1-sizeVariance, 1+sizeVariance) * scale * Vector3.one;
