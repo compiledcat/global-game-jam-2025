@@ -87,17 +87,8 @@ public class LobbyManager : MonoBehaviour
         }
     }
 
-    public static void EndGame()
-    {
-        Camera[] cameras = FindObjectsByType<Camera>(FindObjectsSortMode.None);
-        foreach (Camera cam in cameras)
-        {
-            cam.enabled = false;
-        }
+    //public static void EndGame()
+    //{
 
-        Camera.main.enabled = true;
-        Transform camDestinationTransform = GameObject.FindWithTag("GameEndCameraTransform").transform;
-        Camera.main.transform.position = camDestinationTransform.position;
-        Camera.main.transform.rotation = camDestinationTransform.rotation;
-    }
+    //}
 }

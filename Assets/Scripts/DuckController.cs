@@ -48,7 +48,7 @@ public class DuckController : MonoBehaviour
     public void AdvanceCheckpoint()
     {
         Debug.Log($"PASSED CHECKPOINT {NextCheckpointIndex}");
-        if ((NextCheckpointIndex % CheckpointHandler.checkpoints.Length == 0) && NextCheckpointIndex != 0)
+        if ((NextCheckpointIndex % (CheckpointHandler.checkpoints.Length-1) == 0) && NextCheckpointIndex != 0)
         {
             Debug.Log($"PASSED CHECKPOINT {NextCheckpointIndex}");
             Debug.Log($"PASSED LAP {lapCounter}");
@@ -63,7 +63,18 @@ public class DuckController : MonoBehaviour
                     //Player is in last place
                     //=> All players have finished
                     //=> Race is over
-                    LobbyManager.EndGame();
+                    Camera[] cameras = FindObjectsByType<Camera>(FindObjectsSortMode.None);
+                    foreach (Camera cam in cameras)
+                    {
+                        if (cam.gameObject.tag != "MainCamera")
+                        {
+                            cam.gameObject.SetActive(false);
+                        }
+                    }
+                    //Camera.main.enabled = true;
+                    Transform camDestinationTransform = GameObject.FindWithTag("GameEndCameraTransform").transform;
+                    Camera.main.transform.position = camDestinationTransform.position;
+                    Camera.main.transform.rotation = camDestinationTransform.rotation;
                 }
             }
 
