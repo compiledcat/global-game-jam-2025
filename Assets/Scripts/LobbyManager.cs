@@ -68,11 +68,6 @@ public class LobbyManager : MonoBehaviour
         SplineContainer spline = FindFirstObjectByType<SplineContainer>();
         player.transform.position = (Vector3)spline.Splines[0][0].Position + spline.transform.position;
         Physics.SyncTransforms();
-        EditorApplication.isPaused = true;
-        Debug.Log(player.transform.position);
-        Debug.Log("");
-        //Debug.Log(spline.First().Position);
-        Debug.Log(""); Debug.Log(""); Debug.Log("");
     }
 
     public async void BeginGame()
