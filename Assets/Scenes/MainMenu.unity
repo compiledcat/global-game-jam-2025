@@ -314,8 +314,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press any button to join
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 29814864c44f9094caa201f12aec015b, type: 2}
-  m_sharedMaterial: {fileID: 4874588008495645543, guid: 29814864c44f9094caa201f12aec015b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 44f9d9b615e60194aaa09a67ce597bcb, type: 2}
+  m_sharedMaterial: {fileID: 2991772867221229160, guid: 44f9d9b615e60194aaa09a67ce597bcb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -556,7 +556,7 @@ MonoBehaviour:
   m_text: Quit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 44f9d9b615e60194aaa09a67ce597bcb, type: 2}
-  m_sharedMaterial: {fileID: -9044685059758166372, guid: 44f9d9b615e60194aaa09a67ce597bcb, type: 2}
+  m_sharedMaterial: {fileID: 2991772867221229160, guid: 44f9d9b615e60194aaa09a67ce597bcb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1298,7 +1298,7 @@ MonoBehaviour:
   m_text: Start race
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 44f9d9b615e60194aaa09a67ce597bcb, type: 2}
-  m_sharedMaterial: {fileID: -9044685059758166372, guid: 44f9d9b615e60194aaa09a67ce597bcb, type: 2}
+  m_sharedMaterial: {fileID: 2991772867221229160, guid: 44f9d9b615e60194aaa09a67ce597bcb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
