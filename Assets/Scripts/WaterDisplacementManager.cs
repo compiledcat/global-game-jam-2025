@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 public class WaterDisplacementManager : MonoBehaviour
 {
@@ -30,18 +32,22 @@ public class WaterDisplacementManager : MonoBehaviour
         return randomValue;
     }
 
+    private void OnValidate()
+    {
+        GeneratePlane();
+    }
 
     void Start()
     {
+        // Get the material instance
         if (!material)
         {
-            // Get the material instance
             material = GetComponent<MeshRenderer>().material;
-
-            GeneratePlane(); // apparently unity isn't saving the mesh to the asset so i guess we're doing this too
-            InitialiseWaveParameters();
-            UpdateShaderParameters();
         }
+
+        InitialiseWaveParameters();
+        UpdateShaderParameters();
+        GeneratePlane(); // apparently unity isn't saving the mesh to the asset so i guess we're doing this too
     }
 
     [SerializeField] private int pointsAlongX;
@@ -51,7 +57,7 @@ public class WaterDisplacementManager : MonoBehaviour
     public void GeneratePlane()
     {
         Mesh mesh = GetComponent<MeshFilter>().sharedMesh;
-        mesh.name = "Subdivided plane";
+        mesh.name = $"Subdivided plane {pointsAlongX}x{pointsAlongZ}";
         List<Vector3> vertices = new List<Vector3>();
         List<int> tris = new List<int>();
 
