@@ -1,10 +1,6 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
-using Unity.Mathematics;
-using NUnit.Framework;
-using UnityEditor.Animations;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class WaterDisplacementManager : MonoBehaviour
 {
@@ -23,7 +19,7 @@ public class WaterDisplacementManager : MonoBehaviour
         float randomValue;
         do
         {
-            randomValue = UnityEngine.Random.Range(min, max);
+            randomValue = Random.Range(min, max);
         } while (randomValue >= midClampLow && randomValue <= midClampHigh);
         return randomValue;
     }
@@ -32,12 +28,10 @@ public class WaterDisplacementManager : MonoBehaviour
     void OnEnable()
     {
         // Get the material instance
-        material = GetComponent<MeshRenderer>().sharedMaterial;
+        material = GetComponent<MeshRenderer>().material;
         InitialiseWaveParameters();
         UpdateShaderParameters();
     }
-
-
 
     [SerializeField] private int pointsAlongX;
     [SerializeField] private int pointsAlongZ;
@@ -82,6 +76,7 @@ public class WaterDisplacementManager : MonoBehaviour
         mesh.vertices = vertices.ToArray();
         mesh.triangles = tris.ToArray();
         mesh.RecalculateNormals();
+        mesh.Optimize();
     }
 
     void InitialiseWaveParameters()
