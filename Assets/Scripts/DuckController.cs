@@ -52,7 +52,7 @@ public class DuckController : MonoBehaviour
         {
             Debug.Log($"PASSED CHECKPOINT {NextCheckpointIndex}");
             Debug.Log($"PASSED LAP {lapCounter}");
-            if (lapCounter == 2)
+            if (lapCounter == 0)
             {
                 //Finished final lap
                 Debug.Log("RACE COMPLETE.");
