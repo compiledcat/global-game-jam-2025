@@ -96,6 +96,8 @@ public class LobbyManager : MonoBehaviour
         }
 
         Camera.main.enabled = true;
-
+        Transform camDestinationTransform = GameObject.FindWithTag("GameEndCameraTransform").transform;
+        Camera.main.transform.position = camDestinationTransform.position;
+        Camera.main.transform.rotation = camDestinationTransform.rotation;
     }
 }
