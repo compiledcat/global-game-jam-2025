@@ -1,7 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Splines;
 
 public class LobbyManager : MonoBehaviour
 {
@@ -15,8 +18,6 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] private List<string> _playerVerbs;
     [SerializeField] private List<string> _playerNouns;
     private IDictionary<string, InputDevice> _players = new Dictionary<string, InputDevice>();
-
-    
 
     private string GenerateUniqueName()
     {
@@ -62,10 +63,16 @@ public class LobbyManager : MonoBehaviour
 
     private void OnPlayerJoinGame(PlayerInput player)
     {
-        var offset = Random.insideUnitCircle * 5f;
-        player.transform.position += new Vector3(offset.x, 0, offset.y);
-        //player.transform.position = 
+        //var offset = Random.insideUnitCircle * 5f;
+        //player.transform.position += new Vector3(offset.x, 0, offset.y);
+        SplineContainer spline = FindFirstObjectByType<SplineContainer>();
+        player.transform.position = (Vector3)spline.Splines[0][0].Position + spline.transform.position;
         Physics.SyncTransforms();
+        EditorApplication.isPaused = true;
+        Debug.Log(player.transform.position);
+        Debug.Log("");
+        //Debug.Log(spline.First().Position);
+        Debug.Log(""); Debug.Log(""); Debug.Log("");
     }
 
     public async void BeginGame()
