@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4754059784227302050}
   - component: {fileID: 2824865071558141336}
   - component: {fileID: 6329367323688259049}
+  - component: {fileID: -7815569576046434226}
   m_Layer: 0
   m_Name: ObstacleBase
   m_TagString: Untagged
@@ -81,3 +82,17 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7815569576046434226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3369203349469612941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da42a30befd24c5da50294354b4827c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bounceDamp: 0.04
+  _samplePoints: []

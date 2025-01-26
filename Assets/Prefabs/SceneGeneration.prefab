@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4305749662184558620}
   m_Layer: 0
-  m_Name: BubleParent_inside
+  m_Name: ObstacleParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1109,7 +1109,7 @@ GameObject:
   - component: {fileID: 5626822411691754631}
   - component: {fileID: 4945644361419843178}
   m_Layer: 0
-  m_Name: BubbleSpawner_inside
+  m_Name: ObstacleSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
