@@ -68,7 +68,7 @@ MonoBehaviour:
   m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 44f9d9b615e60194aaa09a67ce597bcb, type: 2}
-  m_sharedMaterial: {fileID: -9044685059758166372, guid: 44f9d9b615e60194aaa09a67ce597bcb, type: 2}
+  m_sharedMaterial: {fileID: 2991772867221229160, guid: 44f9d9b615e60194aaa09a67ce597bcb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_text: Unnamed Duck
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 44f9d9b615e60194aaa09a67ce597bcb, type: 2}
-  m_sharedMaterial: {fileID: -9044685059758166372, guid: 44f9d9b615e60194aaa09a67ce597bcb, type: 2}
+  m_sharedMaterial: {fileID: 2991772867221229160, guid: 44f9d9b615e60194aaa09a67ce597bcb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
