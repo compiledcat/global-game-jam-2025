@@ -120,10 +120,9 @@ public class DuckController : MonoBehaviour
     {
         if (other.TryGetComponent(out CheckpointScript checkpoint))
         {
-            Debug.Log(
-                $"Collided with checkpoint {checkpoint.checkpointIndex} with current player checkpoint index of {NextCheckpointIndex - 1}");
             if (NextCheckpointIndex == checkpoint.checkpointIndex)
             {
+                Debug.Log($"Collided with checkpoint {checkpoint.checkpointIndex} with current player checkpoint index of {NextCheckpointIndex - 1}");
                 AdvanceCheckpoint();
             }
         }
