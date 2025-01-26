@@ -5,7 +5,7 @@ using UnityEngine.Splines;
 
 public class CheckpointHandler : MonoBehaviour
 {
-    static List<CheckpointScript>[] checkpoints;
+    public static List<CheckpointScript>[] checkpoints;
     [SerializeField] SplineContainer path;
     [SerializeField] CheckpointScript checkpoint;
     [SerializeField] int checkpointCount;
