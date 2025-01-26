@@ -136,10 +136,10 @@ public class CheckpointHandler : MonoBehaviour
 
     public static Vector3 GetNearestCheckpoint(int index, Vector3 position)
     {
-        index = index % checkpoints.Length;
+        index %= checkpoints.Length;
         Vector3 nearest = checkpoints[index][0].transform.position;
         float minDist = Vector3.Distance(nearest, position);
-        for (int i = 1; i < checkpoints[index].Count(); i++)
+        for (int i = 1; i < checkpoints[index].Count; i++)
         {
             float dist = Vector3.Distance(checkpoints[index][i].transform.position, position);
             if (dist < minDist)

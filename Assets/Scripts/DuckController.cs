@@ -105,10 +105,11 @@ public class DuckController : MonoBehaviour
         }
     }
 
+
     private void FixedUpdate()
     {
         // todo sample dynamic water height
-        if (transform.position.y <= 1f)
+        if (transform.position.y <= 0.5f)
         {
             _rb.AddForce(transform.forward * (_move.y * _maxSpeed));
         }
