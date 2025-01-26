@@ -47,11 +47,6 @@ public class CheckpointHandler : MonoBehaviour
 
             if (!path.KnotLinkCollection.TryGetKnotLinks(new SplineKnotIndex(i, 0), out var links)) continue;
 
-            foreach (var link in links)
-            {
-                Debug.Log(i + " " + link.Knot + " " + link.Spline);
-            }
-
             var root = links.Where(l => l.Spline == 0);
 
             if (root.Count() == 0) continue;
