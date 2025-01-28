@@ -535,7 +535,7 @@
                     "type": "Value",
                     "id": "0942991e-66cf-48d7-bc93-f88c04cedc12",
                     "expectedControlType": "Vector2",
-                    "processors": "ScaleVector2(y=-1),ScaleVector2(x=2,y=2)",
+                    "processors": "ScaleVector2(y=-1)",
                     "interactions": "",
                     "initialStateCheck": true
                 }
@@ -656,7 +656,7 @@
                     "id": "d3c6a22d-22b9-461f-a8c7-64dfe7806fdc",
                     "path": "<Mouse>/delta",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "ScaleVector2(x=6,y=2.5)",
                     "groups": ";Keyboard&Mouse",
                     "action": "Look",
                     "isComposite": false,
@@ -667,7 +667,7 @@
                     "id": "a63bf9ea-d345-4e0c-8744-be8c607ebafc",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "ScaleVector2(x=120,y=65)",
                     "groups": ";Gamepad",
                     "action": "Look",
                     "isComposite": false,
