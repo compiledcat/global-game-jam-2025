@@ -48,7 +48,7 @@ public class BubbleDetect : MonoBehaviour
 
                 Vector3 origin = new Vector3(
                     i * bounds.x / (resolution.x - 1) - bounds.x / 2 + transform.position.x + Random.Range(-offset, offset),
-                    transform.position.z + height,
+                    transform.position.z + height / 2,
                     j * bounds.y / (resolution.y - 1) - bounds.y / 2 + transform.position.z + Random.Range(-offset, offset)
                 );
                 //RaycastHit hit;
@@ -91,7 +91,7 @@ public class BubbleDetect : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position + new Vector3(0, height / 2, 0), new Vector3(bounds.x, height, bounds.y));
+        Gizmos.DrawWireCube(transform.position, new Vector3(bounds.x, height, bounds.y));
         if (!drawGizmos)
         {
             return;
@@ -103,7 +103,7 @@ public class BubbleDetect : MonoBehaviour
             {
                 Vector3 origin = new Vector3(
                     i * bounds.x / (resolution.x-1) - bounds.x / 2 + transform.position.x,
-                    transform.position.z + height,
+                    transform.position.z + height / 2,
                     j * bounds.y / (resolution.y-1) - bounds.y / 2 + transform.position.z
                 );
 
