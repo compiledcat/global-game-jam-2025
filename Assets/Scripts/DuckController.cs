@@ -26,9 +26,11 @@ public class DuckController : MonoBehaviour
     private Vector2 _move;
 
     public string PlayerName;
-    public int NextCheckpointIndex;
+    public int NextCheckpointIndex = 1;
 
     private float _lapStartTime;
+
+    public static readonly int NumLaps = 3;
 
     private string GetOrdinal(int n)
     {
@@ -48,11 +50,13 @@ public class DuckController : MonoBehaviour
     public void AdvanceCheckpoint()
     {
         Debug.Log($"PASSED CHECKPOINT {NextCheckpointIndex}");
-        if ((NextCheckpointIndex % CheckpointHandler.checkpoints.Length == 0) && NextCheckpointIndex != 0)
+        if (NextCheckpointIndex == 0)
         {
             Debug.Log($"PASSED CHECKPOINT {NextCheckpointIndex}");
             Debug.Log($"PASSED LAP {lapCounter}");
-            if (lapCounter == 0)
+            lapCounter++;
+
+            if (lapCounter == NumLaps)
             {
                 //Finished final lap
                 Debug.Log("RACE COMPLETE.");
@@ -67,10 +71,9 @@ public class DuckController : MonoBehaviour
                 }
             }
 
-            lapCounter++;
         }
 
-        NextCheckpointIndex++;
+        NextCheckpointIndex = CheckpointHandler.GetNext(NextCheckpointIndex);
 
 
         // todo check stuff idk

@@ -129,7 +129,7 @@ public class CheckpointHandler : MonoBehaviour
         Generate();
     }
 
-    public int GetNext(int i)
+    public static int GetNext(int i)
     {
         return (i + 1) % checkpoints.Length;
     }

@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkpointIndex: 0
+  meshRenderer1: {fileID: 3967682188345289279}
+  meshRenderer2: {fileID: 6799975072099318041}
 --- !u!136 &564174151715447620
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -222,6 +224,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: ee5147916e4fa784c92035147a22b560, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ee5147916e4fa784c92035147a22b560, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 65951feb60e53624387e801745f78da2, type: 2}
@@ -237,5 +243,10 @@ PrefabInstance:
 --- !u!4 &2835901283111063888 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ee5147916e4fa784c92035147a22b560, type: 3}
+  m_PrefabInstance: {fileID: 2364843131378448059}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3967682188345289279 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: ee5147916e4fa784c92035147a22b560, type: 3}
   m_PrefabInstance: {fileID: 2364843131378448059}
   m_PrefabAsset: {fileID: 0}
