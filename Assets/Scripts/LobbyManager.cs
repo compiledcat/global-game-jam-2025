@@ -1,6 +1,5 @@
 using System.Collections.Generic;
-using System.Linq;
-using UnityEditor;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -49,6 +48,8 @@ public class LobbyManager : MonoBehaviour
     {
         player.GetComponentInChildren<Camera>().gameObject.SetActive(false);
         player.GetComponentInChildren<Canvas>().gameObject.SetActive(false);
+        player.GetComponentInChildren<CinemachineCamera>().gameObject.SetActive(false);
+        
         var offset = Random.insideUnitCircle * 5f;
         player.transform.position = _spawnLocation.position + new Vector3(offset.x, 0, offset.y);
         player.transform.forward = _spawnLocation.position - player.transform.position;
@@ -64,15 +65,23 @@ public class LobbyManager : MonoBehaviour
 
     private void OnPlayerJoinGame(PlayerInput player)
     {
+        var cinemachineBrain = player.GetComponentInChildren<CinemachineBrain>();
+        var cinemachineCamera = player.GetComponentInChildren<CinemachineCamera>();
+        cinemachineBrain.ChannelMask = (OutputChannels)(1 << player.playerIndex + 1);
+        cinemachineCamera.OutputChannel = (OutputChannels)(1 << player.playerIndex + 1);
+        
         //var offset = Random.insideUnitCircle * 5f;
         //player.transform.position += new Vector3(offset.x, 0, offset.y);
         SplineContainer spline = FindFirstObjectByType<SplineContainer>();
         player.transform.position = (Vector3)spline.Splines[0][0].Position + spline.transform.position;
+        player.transform.forward = (Vector3)spline.Splines[0][1].Position - player.transform.position;
         Physics.SyncTransforms();
     }
 
     public async void BeginGame()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
         _playerInputManager.DisableJoining();
         _playerInputManager.splitScreen = true;
         _playerInputManager.playerJoinedEvent.RemoveListener(OnPlayerJoinLobby);
