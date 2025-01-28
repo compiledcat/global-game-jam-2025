@@ -7,7 +7,7 @@ public class CheckpointHandler : MonoBehaviour
 {
     public static List<CheckpointScript>[] checkpoints;
     [SerializeField] SplineContainer path;
-    [SerializeField] GameObject checkpoint;
+    [SerializeField] GameObject checkpoint, goal;
     [SerializeField] int checkpointCount;
     [SerializeField] float mergeDistance;
 
@@ -57,10 +57,12 @@ public class CheckpointHandler : MonoBehaviour
         for (int i = 0; i < checkpointCount; i++)
         {
             float t = i / (float)checkpointCount;
-            var cp = Instantiate(checkpoint, (Vector3)path.Spline.EvaluatePosition(t) + path.transform.position,
+            var cp_to_spawn = i == 0 ? goal : checkpoint;
+            var cp = Instantiate(cp_to_spawn, (Vector3)path.Spline.EvaluatePosition(t) + path.transform.position,
                 Quaternion.identity, transform).GetComponentInChildren<CheckpointScript>();
             checkpoints[i] = new List<CheckpointScript> { cp };
             cp.checkpointIndex = i;
+            cp.transform.forward = path.Spline.EvaluateTangent(t);
         }
 
         for (int i = 1; i < path.Splines.Count; i++)
@@ -91,6 +93,7 @@ public class CheckpointHandler : MonoBehaviour
                         path.transform.position, Quaternion.identity, transform).GetComponentInChildren<CheckpointScript>();
                     checkpoints[j].Add(cp);
                     cp.checkpointIndex = j;
+                    cp.transform.forward = path.Spline.EvaluateTangent(t);
                 }
             }
         }

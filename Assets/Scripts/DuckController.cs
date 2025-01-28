@@ -29,8 +29,9 @@ public class DuckController : MonoBehaviour
     public int NextCheckpointIndex = 1;
 
     private float _lapStartTime;
+    private float _endRaceTime;
 
-    public static readonly int NumLaps = 3;
+    public static readonly int NumLaps = 2;
 
     private string GetOrdinal(int n)
     {
@@ -50,18 +51,19 @@ public class DuckController : MonoBehaviour
     public void AdvanceCheckpoint()
     {
         Debug.Log($"PASSED CHECKPOINT {NextCheckpointIndex}");
-        if ((NextCheckpointIndex % (CheckpointHandler.checkpoints.Length-1) == 0) && NextCheckpointIndex != 0)
+        if (NextCheckpointIndex == 0)
         {
             Debug.Log($"PASSED CHECKPOINT {NextCheckpointIndex}");
             Debug.Log($"PASSED LAP {lapCounter}");
-            lapCounter++;
 
-            if (lapCounter == NumLaps)
+            if (lapCounter == NumLaps - 1)
             {
                 //Finished final lap
                 Debug.Log("RACE COMPLETE.");
 
                 hasControl = false;
+                _move = Vector2.zero;
+
                 if (LeaderboardManager.GetSortedPlayerArray().Last() == this)
                 {
                     //Player is in last place
@@ -81,6 +83,8 @@ public class DuckController : MonoBehaviour
                     Camera.main.transform.rotation = camDestinationTransform.rotation;
                 }
             }
+
+            lapCounter++;
 
         }
 
@@ -111,8 +115,9 @@ public class DuckController : MonoBehaviour
         if (_lapTimeText.gameObject.activeInHierarchy)
         {
             var sortedPlayers = LeaderboardManager.GetSortedPlayerArray().ToList();
-            var lapTimeFormatted = System.TimeSpan.FromSeconds(Time.time - _lapStartTime).ToString("mm\\:ss\\.fff");
-            _lapTimeText.text = $"{lapTimeFormatted}\nLap {lapCounter + 1}/3";
+            if (hasControl) _endRaceTime = Time.time - _lapStartTime;
+            var lapTimeFormatted = System.TimeSpan.FromSeconds(_endRaceTime).ToString("mm\\:ss\\.fff");
+            _lapTimeText.text = $"{lapTimeFormatted}\nLap {Mathf.Min(lapCounter + 1, NumLaps)}/{NumLaps}";
 
             var position = sortedPlayers.IndexOf(this) + 1;
             _positionText.text = $"<size=200%>{position}{GetOrdinal(position)}</size> / {sortedPlayers.Count}";

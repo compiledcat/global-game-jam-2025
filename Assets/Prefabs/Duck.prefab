@@ -470,7 +470,7 @@ MonoBehaviour:
   _positionText: {fileID: 5051445279569594221}
   lapCounter: 0
   PlayerName: 
-  NextCheckpointIndex: 0
+  NextCheckpointIndex: 1
 --- !u!114 &7342834645944403709
 MonoBehaviour:
   m_ObjectHideFlags: 0
